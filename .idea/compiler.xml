@@ -8,11 +8,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="SistemaInventario-Backend-main" />
         <module name="inventario" />
+        <module name="InventarioSeminario-master" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="InventarioSeminario-master" options="-parameters" />
       <module name="SistemaInventario-Backend-main" options="-parameters" />
       <module name="inventario" options="-parameters" />
     </option>

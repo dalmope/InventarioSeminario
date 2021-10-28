@@ -20,6 +20,4 @@ public class CategoriaServicio {
         return categoriaRepositorio.save(categoria);
     }
 
-
-    
 }
