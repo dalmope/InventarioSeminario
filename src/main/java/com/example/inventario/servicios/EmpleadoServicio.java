@@ -18,4 +18,12 @@ public class EmpleadoServicio {
         return empleadoRepositorio.save(empleado);
     }
 
+    public Empleado actualizarEmpleado(Empleado empleado) {
+        return empleadoRepositorio.save(empleado);
+    }
+
+    public Iterable<Empleado> listarEmpleados() {
+        return empleadoRepositorio.findAll();
+    }
+
 }

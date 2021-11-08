@@ -1,7 +1,6 @@
 package com.example.inventario.servicios;
 
 import com.example.inventario.modelo.Producto;
-import com.example.inventario.repositorios.EmpleadoRepositorio;
 import com.example.inventario.repositorios.ProductoRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +15,10 @@ public class ProductoServicio {
 
     public Producto registrarProducto(Producto producto) {
         return productoRepositorio.save(producto);
+    }
+
+    public Iterable<Producto> listarProductos() {
+        return productoRepositorio.findAll();
     }
 
 }
