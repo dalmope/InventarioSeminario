@@ -26,9 +26,9 @@ public class ProductoControl {
         return productoServicio.listarProductos();
     }
 
-    @GetMapping(path = "/{id}")
-    public Producto buscarProducto(Integer id) {
-    return productoServicio.buscarProducto(id).get();
+    @GetMapping(path = "/{codigo}")
+    public Producto buscarProducto(@PathVariable("codigo") int codigo) {
+    return productoServicio.buscarProducto(codigo).get();
     }
 
     @DeleteMapping (path = "/{codigo}")
