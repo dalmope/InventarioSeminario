@@ -1,5 +1,8 @@
 package com.example.inventario.servicios;
 
+import java.util.ArrayList;
+import java.util.Optional;
+
 import com.example.inventario.modelo.Empleado;
 import com.example.inventario.repositorios.EmpleadoRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +17,10 @@ public class EmpleadoServicio {
         this.empleadoRepositorio = empleadoRepositorio;
     }
 
+    public ArrayList<Empleado> listarEmpleados() {
+        return (ArrayList<Empleado>) empleadoRepositorio.findAll();
+    }
+
     public Empleado registrarEmpleado(Empleado empleado) {
         return empleadoRepositorio.save(empleado);
     }
@@ -22,8 +29,8 @@ public class EmpleadoServicio {
         return empleadoRepositorio.save(empleado);
     }
 
-    public Iterable<Empleado> listarEmpleados() {
-        return empleadoRepositorio.findAll();
+    public Optional<Empleado> buscarEmpleado(Integer id) {
+        return empleadoRepositorio.findById(id);
     }
 
 }

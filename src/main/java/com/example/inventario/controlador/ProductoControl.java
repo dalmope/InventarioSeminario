@@ -3,30 +3,42 @@ package com.example.inventario.controlador;
 import com.example.inventario.modelo.Producto;
 import com.example.inventario.servicios.ProductoServicio;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("producto")
+@RequestMapping("productos")
 public class ProductoControl {
 
     private final ProductoServicio productoServicio;
 
     @Autowired
-    public ProductoControl (ProductoServicio productoServicio){
+    public ProductoControl(ProductoServicio productoServicio) {
         this.productoServicio = productoServicio;
     }
 
-    @PostMapping("/guardar")
-    public void guardar(@RequestBody Producto producto) {productoServicio.registrarProducto(producto);
+    @PostMapping()
+    public void guardar(@RequestBody Producto producto) {
+        productoServicio.registrarProducto(producto);
     }
-    
+
     @GetMapping
-    public Iterable<Producto> listarProductos(){
+    public Iterable<Producto> listarProductos() {
         return productoServicio.listarProductos();
+    }
+
+    @GetMapping(path = "/{id}")
+    public Producto buscarProducto(Integer id) {
+    return productoServicio.buscarProducto(id).get();
+    }
+
+    @DeleteMapping (path = "/{codigo}")
+    public String eliminarProducto(@PathVariable("codigo") int codigo) {
+        Boolean rta = productoServicio.eliminarProducto(codigo);
+        if (rta){
+            return "Se elimino el producto con codigo: " + codigo;
+        }else {
+            return "No se pudo eliminar el producto con codigo: " + codigo;
+        }
     }
 
 }

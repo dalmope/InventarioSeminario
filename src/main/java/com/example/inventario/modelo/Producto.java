@@ -10,7 +10,7 @@ import javax.persistence.Table;
 public class Producto {
     @Id
     @Column(name="codigo")
-    String codigo;
+    Integer codigo;
 
     @Column(name="nombre")
     String nombre;
@@ -35,7 +35,7 @@ public class Producto {
 
     public Producto(){}
 
-    public Producto(String codigo,String nombre,double precio,int cantidad,double iva,
+    public Producto(Integer codigo,String nombre,double precio,int cantidad,double iva,
                     double retencion,int stock,Integer categoria){
         this.codigo=codigo;
         this.nombre=nombre;
@@ -47,11 +47,11 @@ public class Producto {
         this.categoria=categoria;
     }
 
-    public String getCodigo() {
+    public Integer getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
+    public void setCodigo(Integer codigo) {
         this.codigo = codigo;
     }
 

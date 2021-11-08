@@ -1,5 +1,7 @@
 package com.example.inventario.servicios;
 
+import java.util.Optional;
+
 import com.example.inventario.modelo.Producto;
 import com.example.inventario.repositorios.ProductoRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,23 @@ public class ProductoServicio {
 
     public Iterable<Producto> listarProductos() {
         return productoRepositorio.findAll();
+    }
+
+    public Optional<Producto> buscarProducto(Integer id) {
+        return productoRepositorio.findById(id);
+    }
+
+    public Boolean eliminarProducto(Integer id) {
+        Optional<Producto> producto = productoRepositorio.findById(id);
+        if (producto.isPresent()) {
+            productoRepositorio.deleteById(id);
+            return true;
+        }
+        return false;
+    }
+
+    public Producto actualizarProducto(Producto producto) {
+        return productoRepositorio.save(producto);
     }
 
 }

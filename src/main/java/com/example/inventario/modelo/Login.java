@@ -27,5 +27,4 @@ public class Login {
         this.contrasena = contrasena;
     }
 
-
 }
